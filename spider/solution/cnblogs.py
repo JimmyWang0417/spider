@@ -4,7 +4,7 @@ import re
 import urllib.request, urllib.error
 import bs4
 
-url = "https://www.cnblogs.com/wangjunrui/p/12293442.html"  # 地址
+url = "https://www.cnblogs.com/wangjunrui/p/15845906.html"  # 地址
 savePath = "/home/paperdog/HAHA/"
 saveFile = "solution.md"
 
@@ -65,6 +65,9 @@ def get_markdown(html):
     )
     md = re.sub("(?P<a><img[^>]*>)", image, md, 0, re.M)
     md = re.sub('<\w\shref="(?P<a>[^"]*)"[^>]*>(?P<b>[^<"]*)</\w>', link, md, 0, re.M)
+    md = re.sub("</?strong>", "**", md, 0, re.M)
+    md = re.sub("</?s>", "~~", md, 0, re.M)
+    md = re.sub("</?em>", "*", md, 0, re.M)
     md = re.sub("<h1>", "# ", md, 0, re.M)
     md = re.sub("<h2>", "## ", md, 0, re.M)
     md = re.sub("<h3>", "### ", md, 0, re.M)
@@ -77,8 +80,8 @@ def get_markdown(html):
     md = re.sub("&lt;", "<", md, 0, re.M)
     md = re.sub("&gt;", ">", md, 0, re.M)
     md = re.sub("&amp;", "&", md, 0, re.M)
-    md = re.sub(r"\\\(", "$", md, 0, re.M)
-    md = re.sub(r"\\\)", "$", md, 0, re.M)
+    md = re.sub(r"\\\(", " $", md, 0, re.M)
+    md = re.sub(r"\\\)", "$ ", md, 0, re.M)
     md = re.sub(r"\\\[", "$$", md, 0, re.M)
     md = re.sub(r"\\\]", "$$", md, 0, re.M)
     return md
