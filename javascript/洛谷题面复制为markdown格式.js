@@ -43,7 +43,7 @@ function Core(){
     Problem += "### 题目描述\n" + Pdata["description"] + "\n";
     Problem += "### 输入格式\n" + Pdata["inputFormat"] + "\n";
     Problem += "### 输出格式\n" + Pdata["outputFormat"] + "\n";
-    if(Pdata["translation"]!="")
+    if(Pdata["translation"]!=undefined)
         Problem += "### 题意翻译\n" + Pdata["translation"] + "\n";
     Problem += "### 输入输出样例\n";
     $.each(Pdata["samples"],(i,val)=>{

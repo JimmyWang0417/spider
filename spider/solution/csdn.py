@@ -47,7 +47,7 @@ def get_markdown(html):
         re.M,
     )
     md = re.sub(
-        r'<pre><code>(?P<a>[^<]*)</code></pre>',
+        r"<pre><code>(?P<a>[^<]*)</code></pre>",
         code_unknown,
         md,
         0,
@@ -55,15 +55,17 @@ def get_markdown(html):
     )
     md = re.sub("(?P<a><img[^>]*>)", image, md, 0, re.M)
     md = re.sub('<\w\shref="(?P<a>[^"]*)"[^>]*>(?P<b>[^<"]*)</\w>', link, md, 0, re.M)
+    md = re.sub("</?code>", "`", md, 0, re.M)
     md = re.sub("</?strong>", "**", md, 0, re.M)
     md = re.sub("</?s>", "~~", md, 0, re.M)
     md = re.sub("</?em>", "*", md, 0, re.M)
-    md = re.sub("<h1>", "# ", md, 0, re.M)
-    md = re.sub("<h2>", "## ", md, 0, re.M)
-    md = re.sub("<h3>", "### ", md, 0, re.M)
-    md = re.sub("<h4>", "#### ", md, 0, re.M)
-    md = re.sub("<h5>", "##### ", md, 0, re.M)
-    md = re.sub("<h6>", "###### ", md, 0, re.M)
+    md = re.sub("<h1[^>]*>", "\n# ", md, 0, re.M)
+    md = re.sub("<h2[^>]*>", "\n## ", md, 0, re.M)
+    md = re.sub("<h3[^>]*>", "\n### ", md, 0, re.M)
+    md = re.sub("<h4[^>]*>", "\n#### ", md, 0, re.M)
+    md = re.sub("<h5[^>]*>", "\n##### ", md, 0, re.M)
+    md = re.sub("<h6[^>]*>", "\n###### ", md, 0, re.M)
+    md = re.sub("</h[0-6]*[^>]*>", "\n", md, 0, re.M)
     md = re.sub("<li>", "- ", md, 0, re.M)
     md = re.sub("<li>\n", "1. ", md, 0, re.M)
     md = re.sub("</?[a-zA-Z]+[^<>]*>", "", md, 0, re.M)
