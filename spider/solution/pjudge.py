@@ -4,7 +4,7 @@ import re
 import urllib.request, urllib.error
 import bs4
 
-url = "https://www.cnblogs.com/wangjunrui/p/12293442.html"  # 地址
+url = "https://pjudge.ac/blog/p-b-p-b/post/550"  # 地址
 savePath = "/home/paperdog/信息学/出题工具/task/"
 saveFile = "solution.md"
 
@@ -47,7 +47,7 @@ def get_html(url):
 
 def get_markdown(html):
     bs = bs4.BeautifulSoup(html, "html.parser")
-    core = bs.find_all("div", id="article-content")[0]
+    core = bs.find_all("article")[0]
     md = str(core)
     md = re.sub(
         r'<pre><code\sclass="language-(?P<b>[^"]*)">(?P<a>[^<]*)</code></pre>',

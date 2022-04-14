@@ -5,7 +5,7 @@ import urllib.request, urllib.error
 import bs4
 
 url = "https://blogdev.blog.csdn.net/article/details/655919?spm=1001.2014.3001.5502" #地址
-savePath = "/home/paperdog/HAHA/"
+savePath = "/home/paperdog/信息学/出题工具/task/"
 saveFile = "solution.md"
 
 def code(x):

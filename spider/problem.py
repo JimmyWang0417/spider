@@ -5,7 +5,7 @@ import urllib.request, urllib.error
 import bs4
 
 baseUrl = "https://www.luogu.com.cn/problem/P"  # 或者https://uoj.ac/problem/
-savePath = "/home/paperdog/HAHA/"
+savePath = "/home/paperdog/信息学/出题工具/task/"
 minn = 1000  # 最小题号
 maxn = 1001  # 最大题号
 
