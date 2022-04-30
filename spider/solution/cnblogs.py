@@ -20,10 +20,10 @@ def code_unknown(x):
 def image(x):
     y = x.group("a")
     a = re.search(
-        r'src="(?P<a>((http|https):\/\/)?(\w|\.|-)*(\/(\w|\.|-|&|#|%|=|\?)*)*)"', y
+        r'src="(?P<a>((http|https):\/\/)?(\w|\.|-)*(\/(\w|\.|-|&|#|%|=|\(|\)|\?)*)*)"', y
     ).group("a")
     b = re.search(
-        r'alt="(?P<a>((http|https):\/\/)?(\w|\.|-)*(\/(\w|\.|-|&|#|%|=|\?)*)*)"', y
+        r'alt="(?P<a>((http|https):\/\/)?(\w|\.|-)*(\/(\w|\.|-|&|#|%|=|\(|\)|\?)*)*)"', y
     ).group("a")
     return "![{}]({})".format(b, a)
 
